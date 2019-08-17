@@ -1,0 +1,9 @@
+[
+{"id":"5d41ed83-5b94-4e3e-8f3c-2ee8c634d846","username":"brandonhawkins","name":"Brandon Hawkins","two_factor_auth_activated":false,"deactivated":false,"permissions":[{"id":"5d41ed9a-6137-4cc1-8be7-08bc132c3017","created_at":"2019-07-31T19:35:53Z","updated_at":"2019-07-31T21:05:11Z","role":"owner","disabled":false,"email_address":"brandon.hawkins@artifactuprising.com","gravatar_hash":"9c0b41dcabc9ca440a3799ee870e0a58","initials":""}]},
+
+{"id":"5d436b94-9cdf-4db8-9385-a2dc2df0b5c2","username":"karahafez","name":"Kara Hafez","two_factor_auth_activated":false,"deactivated":false,"permissions":[{"id":"5d436b94-ed77-4bc1-af09-fa6e8b75d6aa","created_at":"2019-08-01T22:45:40Z","updated_at":"2019-08-01T22:45:40Z","role":"admin","disabled":false,"email_address":"kara@artifactuprising.com","gravatar_hash":"30bd1292612456ed57bf8e969a2b2ca5","initials":""}]},
+
+{"id":"5d4208d5-5b92-41d1-8319-eb8a5ecec44f","username":"rcron","name":"Rachel Cron","two_factor_auth_activated":false,"deactivated":false,"permissions":[{"id":"5d4208d5-f171-4054-a4c7-5800ea11c120","created_at":"2019-07-31T21:32:05Z","updated_at":"2019-07-31T21:32:05Z","role":"admin","disabled":false,"email_address":"rachel.cron@artifactuprising.com","gravatar_hash":"8cc89402986cf258945885eb5365ae50","initials":""}]}
+,
+
+{"id":"5d433d51-148e-4a6c-b258-3c640ec4256f","username":"brianvoelschow","name":"Brian Voelschow","two_factor_auth_activated":false,"deactivated":false,"permissions":[{"id":"5d433d51-3cc5-42ef-a3a7-76105b777689","created_at":"2019-08-01T19:28:16Z","updated_at":"2019-08-01T19:28:16Z","role":"admin","disabled":false,"email_address":"brian@artifactuprising.com","gravatar_hash":"7f214cf6f8dd5fb142b09daca5a31abb","initials":""}]}]

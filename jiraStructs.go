@@ -152,7 +152,8 @@ func (item *JiraItem) CreateStory(userMaps []userMap) ClubHouseCreateStory {
 	// Map JIRA assignee to Clubhouse owner(s)
 	// Leave array empty if username is unknown
 	// Must use "make" function to force empty array for correct JSON marshalling
-	ownerID := MapUser(userMaps, item.Assignee.Username)
+	//ownerID := MapUser(userMaps, item.Assignee.Username)
+    ownerID := MapUser(userMaps, "brandon.hawkins")
 	var owners []string
 	if ownerID != "" {
 		// owners := []string{ownerID}
@@ -165,38 +166,32 @@ func (item *JiraItem) CreateStory(userMaps []userMap) ClubHouseCreateStory {
 	// cases break automatically, no fallthrough by default
 	var state int64 = 500000014
 	switch item.Status {
-	    case "Ready for Test":
-	        // ready for test
-	        state = 500000010
-	    case "Task In Progress":
-	        // in progress
-	        state = 500000015
-	    case "Selected for Review/Development":
-	    	// selected
-	    	state = 500000011
-	    case "Task backlog":
-	    	// backlog
-	        state = 500000014
-	    case "Done":
-	    	// Completed
-	    	state = 500000012
-	    case "Verified":
-	    	// Completed
-	    	state = 500000012
+	    case "Open":
+	        state = 500000008
+	    case "To Do":
+            state = 500000007
+        case "Doing":
+            state = 500000006
+        case "Status Review":
+            state = 500000010
+        case "Ready for QA":
+            state = 500000009
 	    case "Closed":
-	    	state = 500000021
+	    	state = 500000011
 	    default:
-	    	// backlog
-	        state = 500000014
+	        state = 500000008
     }
 
     requestor := MapUser(userMaps, item.Reporter.Username)
     // _, requestor := GetUserInfo(userMaps, item.Reporter.Username)
     if requestor == "" {
     	// map to me if requestor not in Clubhouse
-    	requestor = MapUser(userMaps, "ted")
+    	requestor = MapUser(userMaps, "brandon.hawkins")
     	// _, requestor = GetUserInfo(userMaps, "ted")
     }
+    
+    fmt.Println("This is the owners object ", owners)
+    fmt.Println("This is the projectID object ", projectID)
 
     fmt.Printf("%s: JIRA Assignee: %s | Project: %d | Status: %s\n\n", item.Key, item.Assignee.Username, projectID, item.Status)
 
@@ -223,6 +218,8 @@ func MapUser(userMaps []userMap, jiraUserName string) string {
 		fmt.Println("[MapUser] JIRA user not found: ", jiraUserName)
     	return ""
 	}
+    
+    fmt.Println("DUMPING chUserID ", chUserID)
 
 	return chUserID
 }
@@ -232,7 +229,7 @@ func MapProject(userMaps []userMap, jiraUserName string) int {
 
 	if projectID == 0 {
 		fmt.Println("[MapProject] JIRA user not found: ", jiraUserName)
-    	return 299
+    	return 10
 	}
 
 	return projectID
@@ -248,7 +245,7 @@ func (comment *JiraComment) CreateComment(userMaps []userMap) ClubHouseCreateCom
 	author := MapUser(userMaps, comment.Author)
 	if author == "" {
 		// since we MUST have a comment author, make it me and prepend the actual username to the comment body
-		author = MapUser(userMaps, "ted")
+		author = MapUser(userMaps, "brandon.hawkins")
 		commentText = comment.Author + ": " + commentText
 	}
 
